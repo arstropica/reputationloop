@@ -1,0 +1,24 @@
+{
+  "name" : "rl/slim",
+  "license": "MIT",
+  "type": "project",
+  "description": "ReputationLoop Code Challenge",
+  "version" : "0.1",
+  "require" : {
+    "php": ">=5.3.3",
+    "slim/slim" : "2.6.2",
+    "twig/twig" : "v1.23.1",
+    "slim/views" : "0.1.3"
+  },
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ],
+  "autoload" : {
+    "psr-0" : {
+      "ReputationLoop" : "vendor/",
+      "Controller" : "./",
+      "Model" : "./"
+    }
+  }
+}
