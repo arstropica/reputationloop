@@ -17,14 +17,21 @@ class BusinessInfo {
 	protected $data;
 	
 	/**
+	 *
+	 * @var array
+	 */
+	protected $ratings;
+	
+	/**
 	 * Constructor
 	 *
 	 * @param array $data        	
 	 *
 	 * @return BusinessInfo
 	 */
-	public function __construct($data = []) {
+	public function __construct($data = [], $ratings = []) {
 		$this->data = $data;
+		$this->ratings = $ratings;
 	}
 	
 	/**
@@ -75,6 +82,13 @@ class BusinessInfo {
 	}
 	
 	/**
+	 * Get Ratings
+	 */
+	public function getRatings() {
+		return $this->ratings;
+	}
+	
+	/**
 	 * Convert underscore to CamelCase
 	 *
 	 * @param string $string        	
@@ -89,7 +103,7 @@ class BusinessInfo {
 	 * @param string $string        	
 	 */
 	private function fromUCC($string) {
-		return strtolower ( preg_replace ( '/([a-z])([A-Z])/', '$1_$2', 
-				$string ) );
+		return strtolower ( 
+				preg_replace ( '/([a-z])([A-Z])/', '$1_$2', $string ) );
 	}
 }

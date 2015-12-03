@@ -46,7 +46,7 @@
 						<h4 class="pull-left">{[{ review.customer_name }]}
 							{[{review.customer_last_name }]}</h4>
 						<div class="rating pull-right" style="width: auto;">
-							<span title="{ [{review.rating}]}" ng-repeat="n in [] | range:5"
+							<span ng-attr-title="{ [{review.rating}]} Star(s)" ng-repeat="n in [] | range:5"
 								ng-class="n + 1 > review.rating ? n + ' glyphicon glyphicon-star-empty' : n + ' glyphicon glyphicon-star'">
 							</span>
 							<p>
