@@ -20,6 +20,12 @@ class Reviews implements \Iterator, \Countable, \ArrayAccess {
 	
 	/**
 	 *
+	 * @var array
+	 */
+	private $ratings;
+	
+	/**
+	 *
 	 * @param array $elements        	
 	 */
 	public function __construct(array $elements = array()) {
@@ -373,6 +379,28 @@ class Reviews implements \Iterator, \Countable, \ArrayAccess {
 	 */
 	public function slice($offset, $length = null) {
 		return array_slice ( $this->_elements, $offset, $length, true );
+	}
+	public function getRatings() {
+		if (! $this->ratings) {
+			$ratings = array_combine ( range ( 1, 5 ), array_pad ( [ ], 5, 0 ) );
+			foreach ( $ratings as $rating => &$value ) {
+				$sum = array_reduce ( $this->_elements, 
+						function ($r, $review) use($rating) {
+							if (intval ( $review ['rating'] ) == $rating) {
+								$r ++;
+							}
+							return $r;
+						}, 0 );
+				$value = [ 
+						'rating' => $rating,
+						'sum' => $sum,
+						'percent' => number_format ( 
+								($sum / $this->count ()) * 100, 1 ) 
+				];
+			}
+			$this->ratings = array_values ( $ratings );
+		}
+		return $this->ratings;
 	}
 }
 

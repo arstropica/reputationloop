@@ -67,10 +67,13 @@ class ReputationLoop {
 		
 		if ($data) {
 			if (isset ( $data ['business_info'] )) {
+				if (isset ( $data ['reviews'] )) {
+					$this->reviews = new Reviews ( $data ['reviews'] );
+				}
+				$ratings = $this->reviews ? $this->reviews->getRatings () : [ ];
 				$this->business_info = new BusinessInfo ( 
-						$data ['business_info'] );
-			}
-			if (isset ( $data ['reviews'] )) {
+						$data ['business_info'], $ratings );
+			} elseif (isset ( $data ['reviews'] )) {
 				$this->reviews = new Reviews ( $data ['reviews'] );
 			}
 		}

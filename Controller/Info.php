@@ -42,6 +42,7 @@ class Info extends Controller {
 		if ($business_info) {
 			$output ['data'] = $business_info->toArray ();
 			$output ['title'] = $business_info->getBusinessName ( $title );
+			$output ['ratings'] = $business_info->getRatings ();
 		}
 		
 		echo json_encode ( $output );
