@@ -1,3 +1,77 @@
-<h1>{{title}}</h1>
+<!DOCTYPE html>
+<html ng-app="RLService">
+	<head>
+		{% block head %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="{{description}}" />
+		<base href="/">
+		<title>{{title}}</title>
+		{% block stylesheets %}
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		{% endblock %}
+		{% endblock head %}
+	</head>
+	<body>
+		<div id="wrap">
+			{# include the header + navigation #}
+			{% include 'partials/header.twig' %}
 
-<p>This is the {{name}} page!</p>
+			<div class="container">
+				{% block content %}
+            	<ng-view></ng-view>
+				<script type="text/ng-template" id="main">
+					<h1>{[{ businessInfo.title }]}</h1>
+					<hr />
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="well" id="businessinfo">
+								<address>
+									<strong>{[{ businessInfo.data.business_name }]}</strong>
+									<br />
+									<span ng-bind-html="businessInfo.data.business_address">{[{ businessInfo.data.business_address }]}</span>
+									<br>
+									<abbr title = "Phone">P:</abbr> {[{ businessInfo.data.business_phone }]}
+								</address>
+	
+							</div>
+						</div>
+						{# include the ratings #}
+						{% include 'partials/ratings.twig' %}
+					</div>
+					<div class="row" id="reviews" ng-controller="BusinessReviewsCtrl">
+						{# include the reviews #}
+						{% include 'partials/reviews.twig' %}
+					</div>
+				</script>
+				{% endblock content %}
+			</div>
+			<div id="push"></div>
+		</div>
+
+		{# include the footer #} {% include 'partials/footer.twig' %} {% block
+		javascripts %}
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js"></script>
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-sanitize.min.js"></script>
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.min.js"></script>
+		<script type="text/javascript" 
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.min.js"></script>
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+		<script type="text/javascript"
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+		<script type="text/javascript" src="/js/angular.extras.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="/js/ui-bootstrap-tpls.min.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
+		{% endblock %}
+	</body>
+
+</html>
