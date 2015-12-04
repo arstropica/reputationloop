@@ -1,0 +1,51 @@
+#reviews {
+  font-size: 90%;
+  margin-bottom: 50px;
+  .rating {
+    color: #555;
+    .glyphicon {
+      font-size: 16px;
+    }
+  }
+  .list-group-item:first-child {
+    border-radius: 0px;
+  }
+  .review-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .controls {
+    height: 75px;
+    padding: 10px 25px;
+    background: #eee;  
+    .review-threshold {
+      margin-top: 5px;
+    }
+  }
+  .page-controls {
+    border: 1px solid #ddd;
+    border-bottom: none;
+    height: 75px;
+    padding: 10px 25px;
+    background: #fafafa;  
+  }
+  .highlight {
+    background: -moz-linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(252, 252, 252, 1) 100%);
+    /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(252, 252, 252, 1)), color-stop(55%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
+    /* safari4+,chrome */
+    background: -webkit-linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(252, 252, 252, 1) 100%);
+    /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(252, 252, 252, 1) 100%);
+    /* opera 11.10+ */
+    background: -ms-linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(252, 252, 252, 1) 100%);
+    /* ie10+ */
+    background: linear-gradient(225deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(252, 252, 252, 1) 100%);
+    /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FCFCFC',GradientType=1 );
+    /* ie6-9 */
+  }
+  .badge-info {
+    margin-top: 5px;
+  }  
+}

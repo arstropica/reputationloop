@@ -1,0 +1,88 @@
+<div class="col-xs-12">
+	<div class="list-group">
+		<div class=" row-flex row-flex-wrap row">
+			<div class="review-item" style="width: 100%">
+				<div class="list-group-item list-group-item-info">
+					<h2 class="list-group-item-heading">
+						Reviews<span class="badge badge-info pull-right">{[{
+							filtered.length }]} Reviews</span>
+					</h2>
+				</div>
+			</div>
+			<div class="review-item" style="width: 100%">
+				<div class="controls">
+					<div class="row">
+						<div class="col-xs-12 col-md-4">
+							<div class="review-threshold">
+								<label>Filter by Rating</label><br> <span slider
+									ng-model="filter.rating" min="slider.min" range="true"
+									max="slider.max"></span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-8">
+							<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+								<label>Filter by Source</label><br>
+								<button type="button" data-toggle="button" ctoggle
+									ng-model="filter[0]" class="btn btn-success active btn-filter">Internal</button>
+								<button type="button" data-toggle="button" ctoggle
+									ng-model="filter[1]" class="btn btn-success active btn-filter">Yelp</button>
+								<button type="button" data-toggle="button" ctoggle
+									ng-model="filter[2]" class="btn btn-success active btn-filter">Google</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="review-item" style="width: 100%">
+				<div  class="page-controls text-center">
+					<uib-pagination total-items="filtered.length"
+						items-per-page="pager.items.max" class="pagination-sm" boundary-links="true" ng-model="pager.current"></uib-pagination>
+				</div>
+			</div>
+			<div id="{[{ review.review_id }]}" class="col-xs-12 col-md-6 review-item"  
+				ng-repeat="review in paginated=(filtered=(reviews | filter: handleFilter) | paginate:(pager.current - 1) * pager.items.max | limitTo: pager.items.max)">
+				<div class="list-group-item flex-col highlight">
+					<div class="list-group-item-heading">
+						<h4 class="pull-left">{[{ review.customer_name }]}
+							{[{review.customer_last_name }]}</h4>
+						<div class="rating pull-right" style="width: auto;">
+							<span title="{ [{review.rating}]}" ng-repeat="n in [] | range:5"
+								ng-class="n + 1 > review.rating ? n + ' glyphicon glyphicon-star-empty' : n + ' glyphicon glyphicon-star'">
+							</span>
+							<p>
+								<i>Rating: {[{ review.rating }]}</i>
+							</p>
+						</div>
+						<div class="clearfix"
+							style="width: 100%; height: 0px; clear: both;"></div>
+					</div>
+					<div class="list-group-item-text review-text">
+						<p>
+							<strong>Review Date:</strong> <span
+								ng-bind="formatDate(review.date_of_submission) | date: 'MMM dd, yyyy'"></span>
+						</p>
+						<p>
+							<strong>Source: </strong> <a ng-href=" {[{ review.customer_url }]}" class="review_source"
+								target="_blank">{[{review.review_source }]} </a>
+						</p>
+						<hr />
+						<div class="review flex-grow">
+							<p class="description" read-more="review.description"
+								read-more-limit="100" read-more-label-expand="Read More"
+								read-more-label-collapse="Read Less"></p>
+						</div>
+						<input type="hidden" class="review_id" value="{ [{ review.review_id }]}"/>
+						<input type="hidden" class="review_url" value="{ [{ review.review_url }]}"/>
+						<input type="hidden" class="customer_url" value="{ [{ review.customer_url }]}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12">
+	<div class="well well-small text-center">
+		<uib-pagination total-items="filtered.length"
+			items-per-page="pager.items.max" class="pagination-sm" boundary-links="true" ng-model="pager.current"></uib-pagination>
+	</div>
+</div>
