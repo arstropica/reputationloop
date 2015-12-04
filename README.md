@@ -1,6 +1,9 @@
 # ReputationLoop
-Code Challenge by Akin Williams
-## Project Description
+*Code Challenge by Akin Williams.*
+
+Site: http://rp.arsnovi.com
+
+## Project Details
 - #### PHP Framework: Slim
 - #### Front End Frameworks:
     - Bootstrap
