@@ -4,14 +4,16 @@
 Site: http://rp.arsnovi.com
 
 ## Project Details
-- #### PHP Framework: Slim
-- #### Front End Frameworks:
+- __PHP Framework: __ 
+	- Slim PHP
+- __Front End Frameworks:__
     - Bootstrap
     - AngularJS
-- #### Front End Scripting
+- __Front End Scripting:__
     - Twig Template
     - Sass
-- #### Task Runner: Grunt
-- #### Dependency Managers: 
+- __Task Runner:__ 
+	- Grunt
+- __Dependency Managers:__
     - Bower
     - Node Package Manager
