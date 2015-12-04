@@ -4,7 +4,7 @@
 Site: http://rp.arsnovi.com
 
 ## Project Details
-- __PHP Framework: __ 
+- __PHP Framework:__ 
 	- Slim PHP
 - __Front End Frameworks:__
     - Bootstrap
