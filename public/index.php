@@ -1,20 +1,18 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 use ReputationLoop\Router;
 
 require ("../vendor/autoload.php");
 
-$router = new Router();
+$router = new Router ();
 
-$routes = array(
-    '/' => '',
-    '/test/:title' => 'Main:test@get'
+$routes = array (
+		'/(:id)' => 'Main:index@get',
+		'/api/get(/:id)' => 'Info:get@get',
+		'/api/reviews/get(/:id)' => 'Review:index@get' 
 );
 
-$router->addRoutes($routes);
+$router->addRoutes ( $routes );
 
-$router->set404Handler("Main:error404");
+$router->set404Handler ( "Main:error404" );
 
-$router->run();
+$router->run ();
