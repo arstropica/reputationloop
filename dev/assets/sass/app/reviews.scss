@@ -15,17 +15,21 @@
     padding-right: 0;
   }
   .controls {
-    height: 75px;
+    min-height: 75px;
     padding: 10px 25px;
     background: #eee;  
     .review-threshold {
       margin-top: 5px;
+      padding: 10px 0;
+    }
+    .btn-group {
+      padding: 10px 0;
     }
   }
   .page-controls {
     border: 1px solid #ddd;
     border-bottom: none;
-    height: 75px;
+    min-height: 75px;
     padding: 10px 25px;
     background: #fafafa;  
   }
@@ -48,4 +52,14 @@
   .badge-info {
     margin-top: 5px;
   }  
+}
+
+@media screen and (max-width: 768px) {
+  #reviews {
+    .controls {
+      .pull-left, .pull-right {
+        float: none !important;
+      }
+    }
+  }
 }

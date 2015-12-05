@@ -7054,11 +7054,11 @@ button.close {
 }
 
 #ratings {
-  height: 150px;
+  min-height: 150px;
 }
 
 #businessinfo {
-  height: 150px;
+  min-height: 150px;
   background-color: #A3D7E6;
 }
 
@@ -7080,17 +7080,21 @@ button.close {
   padding-right: 0;
 }
 #reviews .controls {
-  height: 75px;
+  min-height: 75px;
   padding: 10px 25px;
   background: #eee;
 }
 #reviews .controls .review-threshold {
   margin-top: 5px;
+  padding: 10px 0;
+}
+#reviews .controls .btn-group {
+  padding: 10px 0;
 }
 #reviews .page-controls {
   border: 1px solid #ddd;
   border-bottom: none;
-  height: 75px;
+  min-height: 75px;
   padding: 10px 25px;
   background: #fafafa;
 }
@@ -7114,6 +7118,11 @@ button.close {
   margin-top: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  #reviews .controls .pull-left, #reviews .controls .pull-right {
+    float: none !important;
+  }
+}
 /* Constrain the width */
 .container {
   width: auto;
