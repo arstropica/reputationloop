@@ -94,7 +94,6 @@ app.controller("BusinessShowCtrl", [ '$scope', '$routeParams', '$sce', 'Business
 							if (r['class'] === undefined) {
 								r['class'] = 'danger';
 							}
-							console.log(r['class'], parseFloat(r['percent']));
 						});
 					}
 				}
