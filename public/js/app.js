@@ -287,7 +287,7 @@ app.directive('readMore', function($filter) {
 			limit : '@readMoreLimit'
 		},
 		transclude : true,
-		template : '<span ng-transclude ng-bind-html="desc"></span> <a href="javascript:void();" ng-attr-data-target="#{{target}}" class="more" data-toggle="modal" ng-show="enable()" ng-bind="label"></a>',
+		template : '<span ng-transclude ng-bind-html="desc"></span> <a href="#" ng-attr-data-target="#{{target}}" class="more" data-toggle="modal" ng-show="enable()" ng-bind="label"></a>',
 		link : function(scope /* , element, attrs */) {
 
 			scope.text = scope.desc = $filter('sanitize')(scope.text);
