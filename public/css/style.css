@@ -6966,59 +6966,47 @@ button.close {
   opacity: 1;
 }
 
-.row-flex {
+.flex-row {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  flex: 1 1 auto;
+  flex-flow: row wrap;
 }
-.row-flex > div[class*='col-'] {
+.flex-row > div[class*='col-'] {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  flex: 1 1 auto;
-}
-
-.row-flex-wrap {
-  -webkit-flex-flow: row wrap;
-  align-content: flex-start;
-  flex: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.row-flex > div[class*='col-'] {
-  margin: -.2px;
-  /* hack adjust for wrapping */
-}
-
-.container-flex > div[class*='col-'] {
-  margin: -.2px;
-  /* hack adjust for wrapping */
-}
-.container-flex > div[class*='col-'] div {
-  width: 100%;
-}
-
-.row-flex > div[class*='col-'] div {
-  width: 100%;
+  flex: 0 auto;
 }
 
 .flex-col {
   display: flex;
   display: -webkit-flex;
-  flex: 1 100%;
-  flex-flow: column nowrap;
+  flex: auto 0;
+  flex-flow: column wrap-reverse;
+  flex-direction: column;
 }
 
 .flex-grow {
   display: flex;
+  display: -webkit-flex;
   -webkit-flex: 2;
   flex: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .table-row {
+    display: table;
+    table-layout: fixed;
+  }
+  .table-row > [class^="col-"] {
+    display: table-cell;
+    float: none;
+  }
 }
 
 /* http://www.jquery2dotnet.com/ */
@@ -7072,8 +7060,15 @@ button.close {
 #reviews .rating .glyphicon {
   font-size: 16px;
 }
+#reviews .list-group-item.highlight {
+  height: 230px;
+}
 #reviews .list-group-item:first-child {
   border-radius: 0px;
+}
+#reviews .list-group-item a.more {
+  display: table;
+  margin: 5px 0;
 }
 #reviews .review-item {
   padding-left: 0;
@@ -7159,6 +7154,20 @@ html, body {
 #footer {
   height: 60px;
   background-color: #f5f5f5;
+}
+
+/* Progress Bar */
+.progress-bar {
+  border-radius: 4px;
+}
+.progress-bar > span {
+  width: 100%;
+  text-align: center;
+}
+
+.progress {
+  background-color: #e8e5e5;
+  position: relative;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
