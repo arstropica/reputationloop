@@ -1,8 +1,6 @@
 # ReputationLoop
 *Code Challenge by Akin Williams.*
 
-Site: http://rp.arsnovi.com
-
 ## Project Details
 - __PHP Framework:__ 
 	- Slim PHP
