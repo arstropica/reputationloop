@@ -242,17 +242,31 @@ app.directive("ctoggle", function() {
 	}
 });
 
+// Description: Sanitize Directive
+app.filter('sanitize', function() {
+	return function(text) {
+		var clean = "";
+	    for (var i=0; i<text.length; i++) {
+	        if (text.charCodeAt(i) <= 127) {
+	        	clean += text.charAt(i);
+	        }
+	    }
+	    return clean;
+	};
+});
+
+
 // Description: Read More Truncate Directive
 app.filter('truncate', function() {
 	return function(text, length, end) {
 		if (isNaN(length)) {
 			length = 10;
 		}
-
+		
 		if (end === undefined) {
 			end = '...';
 		}
-
+		
 		if (text === undefined || text.length <= length || text.length - end.length <= length) {
 			return text;
 		} else {
@@ -267,17 +281,20 @@ app.directive('readMore', function($filter) {
 		restrict : 'A',
 		scope : {
 			text : '=readMore',
+			target : '@readMoreTarget',
 			labelExpand : '@readMoreLabelExpand',
 			labelCollapse : '@readMoreLabelCollapse',
 			limit : '@readMoreLimit'
 		},
 		transclude : true,
-		template : '<span ng-transclude ng-bind-html="text"></span><br><br><a ng-show="enable()" href="javascript:;" ng-click="toggleReadMore()" ng-bind="label"></a>',
+		template : '<span ng-transclude ng-bind-html="desc"></span> <a href="javascript:void();" ng-attr-data-target="#{{target}}" class="more" data-toggle="modal" ng-show="enable()" ng-bind="label"></a>',
 		link : function(scope /* , element, attrs */) {
 
+			scope.text = scope.desc = $filter('sanitize')(scope.text);
 			var originalText = scope.text;
-
-			scope.label = scope.labelExpand;
+			
+			scope.label = '[ ' + scope.labelExpand + ' ]';
+			
 
 			scope.enable = function() {
 				return scope.text.length >= scope.limit
@@ -285,11 +302,11 @@ app.directive('readMore', function($filter) {
 
 			scope.$watch('expanded', function(expandedNew) {
 				if (expandedNew) {
-					scope.text = originalText;
-					scope.label = scope.labelCollapse;
+					scope.desc = originalText;
+					scope.label = '[ ' + scope.labelCollapse + ' ]';
 				} else {
-					scope.text = $filter('truncate')(originalText, scope.limit, '...');
-					scope.label = scope.labelExpand;
+					scope.desc = $filter('truncate')(originalText, scope.limit, '...');
+					scope.label = '[ ' + scope.labelExpand + ' ]';
 				}
 			});
 
@@ -300,3 +317,45 @@ app.directive('readMore', function($filter) {
 		}
 	};
 });
+
+app.directive('modal', function () {
+    return {
+        restrict: 'EA',
+        scope: {
+            title: '@modalTitle',
+            header: '@modalHeader',
+            body: '@modalBody',
+            footer: '@modalFooter',
+            callbackbuttonleft: '&ngClickLeftButton',
+            handler: '@lolo'
+        },
+        template: "\
+		<div ng-attr-id='{{handler}}' class='modal fade'>\
+		    <div class='modal-dialog'>\
+		        <div class='modal-content'>\
+		            <div class='modal-header'>\
+		                <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>\
+		                <h4 class='modal-title' ng-bind-html='header'></h4>\
+		            </div>\
+		            <div class='modal-body'>\
+		\
+		                <p class='text-warning' ng-bind-html='body'></p>\
+		\
+		            </div>\
+		            <div class='modal-footer'>\
+		\
+		                <p class='text-left' ng-bind-html='footer'></p>\
+		\
+		                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\
+		\
+		            </div>\
+		        </div>\
+		    </div>\
+		</div>",
+        transclude: true,
+        controller: function ($scope) {
+            $scope.handler = 'pop'; 
+        },
+    };
+});
+
