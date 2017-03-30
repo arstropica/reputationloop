@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 	<div class="list-group">
-		<div class=" row-flex row-flex-wrap row">
+		<div class=" row">
 			<div class="review-item" style="width: 100%">
 				<div class="list-group-item list-group-item-info">
 					<h2 class="list-group-item-heading">
@@ -41,7 +41,8 @@
 			</div>
 			<div id="{[{ review.review_id }]}" class="col-xs-12 col-md-6 review-item"  
 				ng-repeat="review in paginated=(filtered=(reviews | filter: handleFilter) | paginate:(pager.current - 1) * pager.items.max | limitTo: pager.items.max)">
-				<div class="list-group-item flex-col highlight">
+				<modal lolo="modal_{[{ review.review_id }]}" modal-body="{[{ review.description }]}" modal-footer="Rating: {[{review.rating}]} Star(s)" modal-header="{[{ review.customer_name }]}"></modal>
+				<div class="list-group-item highlight">
 					<div class="list-group-item-heading">
 						<h4 class="pull-left">{[{ review.customer_name }]}
 							{[{review.customer_last_name }]}</h4>
@@ -66,10 +67,10 @@
 								target="_blank">{[{review.review_source }]} </a>
 						</p>
 						<hr />
-						<div class="review flex-grow">
+						<div class="review">
 							<p class="description" read-more="review.description"
 								read-more-limit="100" read-more-label-expand="Read More"
-								read-more-label-collapse="Read Less"></p>
+								read-more-label-collapse="Read Less" read-more-target="modal_{[{ review.review_id }]}"></p>
 						</div>
 						<input type="hidden" class="review_id" value="{ [{ review.review_id }]}"/>
 						<input type="hidden" class="review_url" value="{ [{ review.review_url }]}"/>

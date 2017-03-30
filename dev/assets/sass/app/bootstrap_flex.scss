@@ -1,3 +1,7 @@
+$break-small: 320px;
+$break-medium: 768px;
+$break-large: 1200px;
+
 .flex-row {
   display: -webkit-box;
   display: -moz-box;
@@ -28,4 +32,15 @@
   display: -webkit-flex;
   -webkit-flex: 2;
   flex: 2;
+}
+
+.table-row {
+	@media screen and (min-width: $break-medium) {
+		display: table;
+		table-layout: fixed;
+		> [class^="col-"] {
+			display: table-cell;
+			float: none;
+		}
+	}
 }
