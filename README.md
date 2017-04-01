@@ -19,7 +19,8 @@ A simple, single page reviews application written in SlimPHP & Angular.
     - Node Package Manager
 
 ## Installation
-- Clone into web root directory.
+- Clone into web root parent directory.
+- Point web document root to `./public` folder.
 - Run `composer install` in project root.
-- In `/dev`, run `npm install`, then `bower install && grunt` to finish loading dependencies and build assets.
+- In `./dev`, run `npm install`, then `bower install && grunt` to finish loading dependencies and build assets.
     
