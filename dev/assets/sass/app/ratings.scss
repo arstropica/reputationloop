@@ -1,7 +1,7 @@
 /* http://www.jquery2dotnet.com/ */
 
 .glyphicon {
-  margin-right: 5px;
+  margin-right: 2px;
 }
 
 .rating .glyphicon {
@@ -38,4 +38,7 @@
 #businessinfo {
   min-height: 150px;
   background-color: #A3D7E6;
+  .logo {
+	margin-right: 15px;
+  }
 }
